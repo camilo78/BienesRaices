@@ -41,7 +41,7 @@
                     <div class="col-sm-2">
                         <div class="input-group input-group-md">
                             <div class="input-group-text rounded-0"><i  style="color:  #3e54ff" class="fas fa-dollar-sign"></i></div>
-                            <input type="text" name="maxprice" id="autocomplete-input"  class="form-control rounded-0" style="height: 38px"  placeholder="Max Price">
+                            <input type="text" name="maxprice" id="autocomplete-input"  class="form-control rounded-0" style="height: 38px"  placeholder="{{ trans('messages.Max Price') }}">
                         </div>
                     </div>
                     <div class="col-sm-2 d-grid">
