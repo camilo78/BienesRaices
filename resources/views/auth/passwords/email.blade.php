@@ -1,46 +1,83 @@
 @extends('frontend.layouts.app1')
+@section('styles')
+    <style>
+        .divider:after,
+        .divider:before {
+            content: "";
+            flex: 1;
+            height: 1px;
+            background: #eee;
+        }
+        .h-custom {
+            height: calc(100% - 73px);
+        }
+        @media (max-width: 450px) {
+            .h-custom {
+                height: 100%;
+            }
+        }
+        body{
+            background: url("{{ asset('/assets/images/login.jpg') }}") no-repeat center center fixed;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
+        }
+
+    </style>
+@endsection
 
 @section('content')
-
-    <div class="row">
-        <div class="col s12 m6 offset-m3">
-            <div class="card">
-                <h4 class="center indigo-text p-t-30">{{ __('Reset Password') }}</h4>
-
-                <div class="p-20">
+    <section class="vh-100">
+        <div class="container-fluid h-custom">
+            <div class="row d-flex justify-content-center align-items-center h-100  pt-30 pb-30">
+                <div class="col-md-6 col-lg-6 col-xl-5" style="width: 300px">
+                    <img src="{{ asset('/assets/images/logo.svg') }}" class="img-fluid" alt="Sample image">
+                </div>
+                <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1" style="width: 400px">
                     @if (session('status'))
-                        <div class="alert alert-success">
+                        <div class="alert alert-success rounded-0">
                             {{ session('status') }}
                         </div>
                     @endif
-
                     <form method="POST" action="{{ route('password.email') }}">
                         @csrf
-
-                        <div class="row">
-                            <div class="input-field col s12">
-                                <label for="email">{{ __('E-Mail Address') }}</label>
-                                <input id="email" type="email" class="{{ $errors->has('email') ? 'is-invalid' : '' }}" name="email" value="{{ old('email') }}" required>
-
-                                @if ($errors->has('email'))
-                                    <span class="helper-text" data-error="wrong" data-success="right">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
+                        <div class="d-flex justify-content-between">
+                        <div class="d-flex flex-row align-items-center justify-content-center justify-content-lg-start mb-4">
+                            <p class="lead fw-bold me-3">{{ __('Reset Password') }}</p>
+                        </div>
+                            <a href="{{ route('home') }}" class="card-fot lead"><i class="fas fa-undo-alt fa-fw"></i> {{ trans('messages.Home') }}</a>
+                        </div>
+                        <!-- Email input -->
+                        <div class="form-outline mb-4">
+                            <input id="email" type="email"
+                                   class="{{ $errors->has('email') ? 'is-invalid' : '' }} rounded-0 form-control form-control-sm"
+                                   placeholder="  {{ __('E-Mail Address') }}"
+                                   name="email" value="{{ old('email') }}" required autofocus>
+                            @if ($errors->has('email'))
+                                <label class="form-label text-danger"
+                                       for="form3Example3">{{ $errors->first('email') }}</label>
+                            @endif
+                        </div>
+                        <div class="text-center text-lg-start mt-4 pt-2">
+                            <button type="submit" class="btn btn-primary rounded-0"
+                                    style="padding-left: 2.5rem; padding-right: 2.5rem;">{{ __('Send Password Reset Link') }}
+                            </button>
+                            <p class="small fw-bold mt-2 pt-1 mb-0">{{ trans("messages.Don't have an account?") }} <a href="{{ route('register') }}" class="link-danger"> {{ trans('messages.Register') }}</a>
+                            </p>
                         </div>
 
-                        <div class="row">
-                            <div class="input-field col s12">
-                                <button type="submit" class="waves-effect waves-light btn indigo">
-                                    {{ __('Send Password Reset Link') }}
-                                </button>
-                            </div>
-                        </div>
                     </form>
                 </div>
             </div>
         </div>
-    </div>
+        <div class="d-flex flex-column flex-md-row text-center text-md-start justify-content-center py-4 px-4 px-xl-5">
+            <!-- Copyright -->
+            <div class="mb-3 mb-md-0">
+                Copyright © 2020. {{ config('app.name', 'Casa Propia') }} {{ trans('messages.All rights reserved') }}.
+            </div>
+            <!-- Copyright -->
+        </div>
+    </section>
 
 @endsection

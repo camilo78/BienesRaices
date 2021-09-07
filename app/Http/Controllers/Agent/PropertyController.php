@@ -13,6 +13,7 @@ use Carbon\Carbon;
 use Toastr;
 use Auth;
 use File;
+use App\Setting;
 
 class PropertyController extends Controller
 {
@@ -22,32 +23,34 @@ class PropertyController extends Controller
                               ->withCount('comments')
                               ->where('agent_id', Auth::id())
                               ->paginate(10);
-        
-        return view('agent.properties.index',compact('properties'));
+        $settings   = Setting::get();
+
+        return view('agent.properties.index',compact('properties','settings'));
     }
 
     public function create()
     {   
         $features = Feature::all();
+        $settings   = Setting::get();
 
-        return view('agent.properties.create',compact('features'));
+        return view('agent.properties.create',compact('features','settings'));
     }
 
 
     public function store(Request $request)
     { 
         $request->validate([
-            'title'     => 'required|unique:properties|max:255',
-            'price'     => 'required',
-            'purpose'   => 'required',
-            'type'      => 'required',
-            'bedroom'   => 'required',
-            'bathroom'  => 'required',
-            'city'      => 'required',
-            'address'   => 'required',
-            'area'      => 'required',
-            'image'     => 'required|image|mimes:jpeg,jpg,png',
-            'floor_plan'=> 'image|mimes:jpeg,jpg,png',
+            'title'              => 'required|unique:properties|max:255',
+            'price'              => 'required',
+            'purpose'            => 'required',
+            'type'               => 'required',
+            'bedroom'            => 'required',
+            'bathroom'           => 'required',
+            'city'               => 'required',
+            'address'            => 'required',
+            'area'               => 'required',
+            'image'              => 'required|image|mimes:jpeg,jpg,png',
+            'floor_plan'         => 'image|mimes:jpeg,jpg,png',
             'description'        => 'required',
             'location_latitude'  => 'required',
             'location_longitude' => 'required',
@@ -118,7 +121,7 @@ class PropertyController extends Controller
         {
             foreach($gallary as $images)
             {
-                $currentDate = Carbon::now()->toDateString();
+                $currentDate      = Carbon::now()->toDateString();
                 $galimage['name'] = 'gallary-'.$currentDate.'-'.uniqid().'.'.$images->getClientOriginalExtension();
                 $galimage['size'] = $images->getClientSize();
                 $galimage['property_id'] = $property->id;
@@ -142,8 +145,9 @@ class PropertyController extends Controller
     {   
         $features = Feature::all();
         $property = Property::where('slug',$property->slug)->first();
+        $settings = Setting::get();
 
-        return view('agent.properties.edit',compact('property','features'));
+        return view('agent.properties.edit',compact('property','features','settings'));
     }
 
 

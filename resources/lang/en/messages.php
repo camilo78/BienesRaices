@@ -88,16 +88,40 @@ return [
     'Profile' => 'Profile',
     'Related Properties' => 'Related Properties',
     "Don't have an account?" => "Don't have an account?",
+    "Do you already have an account" => "Do you already have an account?",
     'Register' => 'Register',
     'properties.page.message' => 'Image gallery of our most outstanding properties and activities, organized in albums.',
     'Loading' => 'Loading',
     'Sent' => 'Sent',
     'contact.message' => 'Contactanos para resolver cualquier duda o solicitar informacón será un placer hacer negocios con usted.',
-
-
-
-
-
+    'Name' => 'Name',
+    'Mail' => 'Mail',
+    'Phone' => 'Phone',
+    'Message' => 'Message',
+    'Call us Now' => 'Call us Now',
+    'Email Address' => 'Email Address',
+    'Address' => 'Address',
+    'Name' => 'Name',
+    'Username' => 'Username',
+    'Email' => 'Email',
+    'About me' => 'About me',
+    'Send' => 'Send',
+    'Change Password' => 'Change Password',
+    'Messages' => 'Messages',
+    'Action' => 'Action',
+    'Reply Message' => 'Reply Message',
+    'TO' => 'TO',
+    'Write your message' => 'Write your message',
+    'Message' => 'Message',
+    'Subject' => 'Subject',
+    'Subject of mail' => 'Subject  of mail',
+    'Change Password' => 'Change Password',
+    'Current Password' => 'Current Password',
+    'New Password' => 'New Password',
+    'Confirm' => 'Confirm',
+    'Our Real Estate Agents' => 'Our Real Estate Agents',
+    'agents_message' => 'Contact our agents if you have any questions.',
+    'Create Property' => 'Create Property',
 ];
 
 

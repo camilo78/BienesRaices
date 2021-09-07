@@ -84,7 +84,7 @@
 
                         <!-- Password confirm input -->
                         <div class="form-outline mb-3">
-                            <input id="password-confirm" class="rounded-0 form-control form-control-sm" type="password" name="password_confirmation" required>
+                            <input id="password-confirm" class="rounded-0 form-control form-control-sm" type="password" name="password_confirmation" placeholder="{{ __('Confirm Password') }}" required>
                         </div>
 
 
@@ -92,7 +92,7 @@
                             <button type="submit" class="btn btn-primary rounded-0"
                                     style="padding-left: 2.5rem; padding-right: 2.5rem;"> {{ __('Register') }}
                             </button>
-                            <p class="small fw-bold mt-2 pt-1 mb-0">{{ trans("messages.Don't have an account?") }} <a href="{{ route('register') }}" class="link-danger"> {{ trans('messages.Register') }}</a>
+                            <p class="small fw-bold mt-2 pt-1 mb-0">{{ trans("messages.Do you already have an account") }} <a href="{{ route('login') }}" class="link-danger"> {{ trans('messages.Login') }}</a>
                             </p>
                         </div>
 

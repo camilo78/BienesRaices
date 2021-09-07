@@ -33,42 +33,42 @@
 
                     <div class="form-group form-float">
                         <div class="form-line">
-                            <input type="number" class="form-control" name="price" required>
+                            <input type="number" class="form-control" name="price" required value="{{old('price')}}">
                             <label class="form-label">Price</label>
                         </div>
                     </div>
 
                     <div class="form-group form-float">
                         <div class="form-line">
-                            <input type="number" class="form-control" name="bedroom" required>
+                            <input type="number" class="form-control" name="bedroom" required value="{{old('bedroom')}}">
                             <label class="form-label">Bedroom</label>
                         </div>
                     </div>
 
                     <div class="form-group form-float">
                         <div class="form-line">
-                            <input type="number" class="form-control" name="bathroom" required>
+                            <input type="number" class="form-control" name="bathroom" required value="{{old('bathroom')}}">
                             <label class="form-label">Bathroom</label>
                         </div>
                     </div>
 
                     <div class="form-group form-float">
                         <div class="form-line">
-                            <input type="text" class="form-control" name="city" required>
+                            <input type="text" class="form-control" name="city" required value="{{old('city')}}">
                             <label class="form-label">City</label>
                         </div>
                     </div>
 
                     <div class="form-group form-float">
                         <div class="form-line">
-                            <input type="text" class="form-control" name="address" required>
+                            <input type="text" class="form-control" name="address" required value="{{old('address')}}">
                             <label class="form-label">Address</label>
                         </div>
                     </div>
 
                     <div class="form-group form-float">
                         <div class="form-line">
-                            <input type="number" class="form-control" name="area" required>
+                            <input type="number" class="form-control" name="area" required value="{{old('area')}}">
                             <label class="form-label">Area</label>
                         </div>
                         <div class="help-info">Square Feet</div>
@@ -141,7 +141,7 @@
 
                     <div class="form-group form-float">
                         <div class="form-line">
-                            <input type="text" class="form-control" name="video">
+                            <input type="text" class="form-control" name="video" value="{{old('video')}}">
                             <label class="form-label">Video</label>
                         </div>
                         <div class="help-info">Youtube Link</div>
@@ -151,13 +151,13 @@
                         <h5>Google Map</h5>
                         <div class="form-group">
                             <div class="form-line">
-                                <input type="text" name="location_latitude" class="form-control" required/>
+                                <input type="text" name="location_latitude" class="form-control" required value="{{old('location_latitude')}}">
                                 <label class="form-label">Latitude</label>
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="form-line">
-                                <input type="text" name="location_longitude" class="form-control" required/>
+                                <input type="text" name="location_longitude" class="form-control" required value="{{old('location_longitude')}}">
                                 <label class="form-label">Longitude</label>
                             </div>
                         </div>
@@ -171,7 +171,7 @@
                 </div>
                 <div class="body">
                     <div class="form-group">
-                        <input type="file" name="floor_plan">
+                        <input type="file" name="floor_plan" value="{{old('floor_plan')}}">
                     </div>
                 </div>
             </div>
@@ -181,7 +181,7 @@
                 </div>
                 <div class="body">
                     <div class="form-group">
-                        <input type="file" name="image">
+                        <input type="file" name="image" value="{{old('image')}}">
                     </div>
 
                     {{-- BUTTON --}}

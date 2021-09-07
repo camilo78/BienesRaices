@@ -49,7 +49,7 @@
                             <div class="col-md-12 mb-4">
                                 <div class="row">
                                     <div class="col-lg-2">
-                                        <span class="fw-bold">Name</span>
+                                        <span class="fw-bold">{{ trans('messages.Name') }}</span>
                                     </div>
                                     <div class="col-lg-10">
                                         <input id="name" name="name" type="text"
@@ -63,7 +63,7 @@
                             <div class="col-md-12 mb-4">
                                 <div class="row">
                                     <div class="col-lg-2">
-                                        <span class="fw-bold">Name</span>
+                                        <span class="fw-bold">{{ trans('messages.Name') }}</span>
                                     </div>
                                     <div class="col-lg-10">
                                         <input id="name" name="name" type="text"
@@ -77,7 +77,7 @@
                             <div class="col-md-12 mb-4">
                                 <div class="row">
                                     <div class="col-lg-2">
-                                        <span class="fw-bold">Mail</span>
+                                        <span class="fw-bold">{{ trans('messages.Mail') }}</span>
                                     </div>
                                     <div class="col-lg-10">
                                         <input id="email" name="email" type="email"
@@ -91,7 +91,7 @@
                             <div class="col-md-12 mb-4">
                                 <div class="row">
                                     <div class="col-lg-2">
-                                        <span class="fw-bold">Mail</span>
+                                        <span class="fw-bold">{{ trans('messages.Mail') }}</span>
                                     </div>
                                     <div class="col-lg-10">
                                         <input id="email" name="email" type="email"
@@ -103,10 +103,10 @@
                         <div class="col-md-12 mb-4">
                             <div class="row">
                                 <div class="col-lg-2">
-                                    <span class="fw-bold">Phone</span>
+                                    <span class="fw-bold">{{ trans('messages.Phone') }}</span>
                                 </div>
                                 <div class="col-lg-10">
-                                    <input id="phone" name="phone" placeholder="Phone" type="number"
+                                    <input id="phone" name="phone" type="number"
                                            class="form-control bg-white rounded-0">
                                 </div>
                             </div>
@@ -114,7 +114,7 @@
                         <div class="col-md-12 mb-4">
                             <div class="row">
                                 <div class="col-lg-2">
-                                    <span class="fw-bold">Message</span>
+                                    <span class="fw-bold">{{ trans('messages.Message') }}</span>
                                 </div>
                                 <div class="col-lg-10">
                                     <textarea id="message" name="message" class="materialize-textarea"></textarea>
@@ -138,7 +138,7 @@
                             <i class="fas fa-phone fs-4"></i>
                         </div>
                         <div class="col-lg-11">
-                            <h6>Call us Now</h6>
+                            <h6>{{ trans('messages.Call us Now') }}</h6>
                             @if(isset($contactsettings[0]) && $contactsettings[0]['phone'])
                                 <h6 class="bold m-l-40">{{ $contactsettings[0]['phone'] }}</h6>
                             @endif
@@ -149,7 +149,7 @@
                             <i class="fas fa-envelope fs-4"></i>
                         </div>
                         <div class="col-md-10">
-                            <h6 class="uppercase">Email Address</h6>
+                            <h6 class="uppercase">{{ trans('messages.Email Address') }}</h6>
                             @if(isset($contactsettings[0]) && $contactsettings[0]['email'])
                                 <h6 class="bold m-l-40">{{ $contactsettings[0]['email'] }}</h6>
                             @endif
@@ -160,7 +160,7 @@
                             <i class="fas fa-map-marked-alt"></i>
                         </div>
                         <div class="col-md-10">
-                            <h6 class="uppercase">Address</h6>
+                            <h6 class="uppercase">{{ trans('messages.Address') }}</h6>
                             @if(isset($contactsettings[0]) && $contactsettings[0]['address'])
                                 <h6 class="bold m-l-40">{!! $contactsettings[0]['address'] !!}</h6>
                             @endif

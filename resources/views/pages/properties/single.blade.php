@@ -279,8 +279,7 @@
                                 @if($comment->parent_id == null)
                                     <li>
                                         <div class="comment-img">
-                                            <img src="{{  $comment->users->image ? asset('/assets/images/no_imagen.png') : Storage::url('users/'.$comment->users->image) }}"
-                                                 class="rounded-circle" alt="img">
+                                            <img src="{{  $comment->users->image ? Storage::url('users/'.$comment->users->image) : asset('/assets/images/no_imagen.png') }}" class="rounded-circle" alt="img">
                                         </div>
                                         <div class="comment-desc mb-2">
                                             <div class="desc-top">
@@ -301,8 +300,8 @@
                                     @foreach($comment->children as $comment)
                                         <li class="children">
                                             <div class="comment-img">
-                                                <img src="{{  $comment->users->image ? asset('/assets/images/no_imagen.png') : Storage::url('users/'.$comment->users->image) }}"
-                                                     class="rounded-circle" alt="img">
+                                                <img src="{{  $comment->users->image ? Storage::url('users/'.$comment->users->image) : asset('/assets/images/no_imagen.png') }}" class="rounded-circle" alt="img">
+
                                             </div>
                                             <div class="comment-desc">
                                                 <div class="desc-top">

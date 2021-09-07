@@ -5,111 +5,104 @@
 
 @section('content')
 
-    <section class="section">
-        <div class="container">
-            <div class="row">
-
-                <div class="col s12 m3">
-                    <div class="agent-sidebar">
-                        @include('user.sidebar')
+<section class="section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3">
+                <div class="agent-sidebar">
+                    @include('user.sidebar')
+                </div>
+            </div>
+            <div class="col-lg-9 col-md-9">
+                <div class="card rounded-0 shadow border-0 bg-primary">
+                    <div class="card-body">
+                        <h4 class="text-white">{{ trans('messages.Reply Message') }}</h4>
                     </div>
                 </div>
-
-                <div class="col s12 m9">
-
-                    <h4 class="agent-title">REPLAY MESSAGES</h4>
-                    
-                    <div class="agent-content">
-                        
-                        @if($message->user_id)
+                <div class="card rounded-0 shadow border-0">
+                    <div class="card-body">
+                            @if($message->user_id)
                             <form action="{{route('user.message.send')}}" method="POST">
-                                @csrf
-                                <input type="hidden" name="agent_id" value="{{ $message->user_id }}">
-                                <input type="hidden" name="user_id" value="{{ auth()->id() }}">
-                                <input type="hidden" name="name" value="{{ auth()->user()->name }}">
-                                <input type="hidden" name="email" value="{{ auth()->user()->email }}">
-
-                                <div class="row">
-                                    <div class="input-field col s6">
-                                        <i class="material-icons prefix">email</i>
-                                        <input id="email" type="email" value="{{ $message->email }}" class="validate" readonly>
-                                        <label for="email">TO</label>
-                                    </div>
-                                    <div class="input-field col s6">
-                                        <i class="material-icons prefix">phone</i>
-                                        <input id="phone" name="phone" type="number" class="validate">
-                                        <label for="phone">Phone</label>
+                            @csrf
+                            <input type="hidden" name="agent_id" value="{{ $message->user_id }}">
+                            <input type="hidden" name="user_id" value="{{ auth()->id() }}">
+                            <input type="hidden" name="name" value="{{ auth()->user()->name }}">
+                            <input type="hidden" name="email" value="{{ auth()->user()->email }}">
+                            <div class="row">
+                                <div class="col-lg-12 col-md-12 d-flex justify-content-between mt-3">
+                                    <div class="input-group flex-nowrap">
+                                        <span class="input-group-text input-group-lg rounded-0 btn-primary" id="addon-wrapping"><i class="fas fa-envelope fa-fw align-self-center"></i></span>
+                                        <input id="email" name="email" type="email" value="{{ $message->email }}" class="form-control form-control-lg px-3" readonly>
+                                        <span class="input-group-text rounded-0 btn-primary">{{ trans('messages.TO') }}</span>
                                     </div>
                                 </div>
-    
-                                <div class="row">
-                                    <div class="input-field col s12">
-                                        <i class="material-icons prefix">mode_edit</i>
-                                        <textarea id="message" name="message" class="materialize-textarea"></textarea>
-                                        <label for="message">Message</label>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-12 col-md-12 d-flex justify-content-between mt-3">
+                                    <div class="input-group flex-nowrap">
+                                        <span class="input-group-text input-group-lg rounded-0 btn-primary" id="addon-wrapping"><i class="fas fa-phone"></i></span>
+                                        <input id="phone" name="phone" type="number" placeholder="Phone" class="form-control form-control-lg px-3">
                                     </div>
                                 </div>
-    
-                                <div class="row">
-                                    <button class="btn waves-effect waves-light btn-small indigo darken-4 right" type="submit">
-                                        <span>SEND</span>
-                                        <i class="material-icons right">send</i>
-                                    </button>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-12 col-md-12 d-flex justify-content-between mt-3">
+                                    <div class="input-group flex-nowrap">
+                                        <span class="input-group-text input-group-lg rounded-0 btn-primary"  id="addon-wrapping"><i class="fas fa-edit"></i></span>
+                                        <textarea id="message-mail" name="message" placeholder="{{ trans('messages.Write your message') }}"  class="form-control form-control-lg px-3"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-12 col-md-12 d-flex mt-3 mb-3 justify-content-end">
+                                    <button class="btn btn-lg btn-primary rounded-0" type="submit">{{ trans('messages.Send') }}</button>
                                 </div>
                             </form>
-
-                        @else
+                            @else
                             <form action="" method="POST">
                                 @csrf
-
                                 <div class="row">
-                                    <div class="input-field col s12">
-                                        <i class="material-icons prefix">email</i>
-                                        <input id="email" name="email" type="email" value="{{ $message->email }}" class="validate" readonly>
-                                        <label for="email">TO</label>
+                                    <div class="col-lg-12 col-md-12 d-flex justify-content-between mt-3">
+                                        <div class="input-group flex-nowrap">
+                                            <span class="input-group-text input-group-lg rounded-0 btn-primary" id="addon-wrapping"><i class="fas fa-envelope fa-fw align-self-center"></i></span>
+                                            <input id="email" name="email" type="email" value="{{ $message->email }}" class="form-control form-control-lg px-3" readonly>
+                                            <span class="input-group-text rounded-0 btn-primary">{{ trans('messages.TO') }}</span>
+                                        </div>
                                     </div>
                                 </div>
-
                                 <div class="row">
-                                    <div class="input-field col s12">
-                                        <i class="material-icons prefix">subject</i>
-                                        <input id="subject" name="subject" type="text" class="validate">
-                                        <label for="subject">Subject</label>
+                                    <div class="col-lg-12 col-md-12 d-flex justify-content-between mt-3">
+                                        <div class="input-group flex-nowrap">
+                                            <span class="input-group-text input-group-lg rounded-0 btn-primary" id="addon-wrapping"><i class="fas fa-user-edit fa-fw align-self-center"></i></span>
+                                            <input id="subject" name="subject" type="text" placeholder="{{ trans('messages.Subject of mail') }}" class="form-control form-control-lg px-3">
+                                        </div>
                                     </div>
                                 </div>
-    
                                 <div class="row">
-                                    <div class="input-field col s12">
-                                        <i class="material-icons prefix">mode_edit</i>
-                                        <textarea id="message-mail" name="message" class="materialize-textarea"></textarea>
-                                        <label for="message">Message</label>
+                                    <div class="col-lg-12 col-md-12 d-flex justify-content-between mt-3">
+                                        <div class="input-group flex-nowrap">
+                                            <span class="input-group-text input-group-lg rounded-0 btn-primary"  id="addon-wrapping"><i class="fas fa-edit"></i></span>
+                                            <textarea id="message-mail" name="message" placeholder="{{ trans('messages.Write your message') }}"  class="form-control form-control-lg px-3"></textarea>
+                                        </div>
                                     </div>
                                 </div>
-    
                                 <div class="row">
-                                    <button class="btn waves-effect waves-light btn-small indigo darken-4 right" type="submit">
-                                        <span>SEND</span>
-                                        <i class="material-icons right">send</i>
-                                    </button>
+                                    <div class="col-lg-12 col-md-12 d-flex mt-3 mb-3 justify-content-end">
+                                        <button class="btn btn-lg btn-primary rounded-0" type="submit">{{ trans('messages.Send') }}</button>
+                                    </div>
                                 </div>
-    
                             </form>
-                        @endif
-
+                            @endif
+                        </div>
                     </div>
                 </div>
-
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
 @endsection
 
 @section('scripts')
-<script>
-    $(document).ready(function() {
-        $('textarea#message').characterCounter();
-        $('textarea#message-mail').characterCounter();
-    });
-</script>
+
 @endsection

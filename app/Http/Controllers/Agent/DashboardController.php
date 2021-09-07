@@ -15,6 +15,7 @@ use App\User;
 use Auth;
 use Hash;
 use Toastr;
+use App\Setting;
 
 class DashboardController extends Controller
 {
@@ -26,14 +27,16 @@ class DashboardController extends Controller
         $messages      = Message::latest()->where('agent_id', Auth::id())->take(5)->get();
         $messagetotal  = Message::latest()->where('agent_id', Auth::id())->count();
 
-        return view('agent.dashboard',compact('properties','propertytotal','messages','messagetotal'));
+        $settings      = Setting::get();
+        return view('agent.dashboard',compact('properties','propertytotal','messages','messagetotal','settings'));
     }
 
     public function profile()
     {
-        $profile = Auth::user();
+        $profile  = Auth::user();
+        $settings = Setting::get();
 
-        return view('agent.profile',compact('profile'));
+        return view('agent.profile',compact('profile','settings'));
     }
     public function profileUpdate(Request $request)
     {
@@ -64,11 +67,11 @@ class DashboardController extends Controller
             Storage::disk('public')->put('users/'.$imagename, $userimage);
         }
 
-        $user->name = $request->name;
+        $user->name     = $request->name;
         $user->username = $request->username;
-        $user->email = $request->email;
-        $user->image = $imagename;
-        $user->about = $request->about;
+        $user->email    = $request->email;
+        $user->image    = $imagename;
+        $user->about    = $request->about;
 
         $user->save();
 
@@ -79,7 +82,8 @@ class DashboardController extends Controller
     
     public function changePassword()
     {
-        return view('agent.changepassword');
+        $settings = Setting::get();
+        return view('agent.changepassword', compact('settings'));
 
     }
 
@@ -115,22 +119,25 @@ class DashboardController extends Controller
     public function message()
     {
         $messages = Message::latest()->where('agent_id', Auth::id())->paginate(10);
+        $settings = Setting::get();
 
-        return view('agent.messages.index',compact('messages'));
+        return view('agent.messages.index',compact('messages','settings'));
     }
 
     public function messageRead($id)
     {
         $message = Message::findOrFail($id);
+        $settings = Setting::get();
 
-        return view('agent.messages.read',compact('message'));
+        return view('agent.messages.read',compact('message','settings'));
     }
 
     public function messageReplay($id)
     {
         $message = Message::findOrFail($id);
+        $settings = Setting::get();
 
-        return view('agent.messages.replay',compact('message'));
+        return view('agent.messages.replay',compact('message','settings'));
     }
 
     public function messageSend(Request $request)
