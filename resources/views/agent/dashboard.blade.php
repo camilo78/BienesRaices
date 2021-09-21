@@ -6,9 +6,7 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-3 col-md-3">
-                <div class="agent-sidebar">
-                    @include('agent.sidebar')
-                </div>
+                @include('agent.sidebar')
             </div>
             <div class="col-lg-9 col-md-9">
                 <div class="card bg-primary shadow rounded-0">
@@ -21,7 +19,7 @@
                         <div class="card bg-primary shadow rounded-0 mt-3">
                             <div class="card-body text-white h4">
                                 <i class="fas fa-city fa-fw"></i>
-                                <span class="h5">Properties  {{ $propertytotal }}</span>
+                                <span class="h5">{{ trans('messages.Properties') }}  {{ $propertytotal }}</span>
                             </div>
                         </div>
                     </div>
@@ -29,7 +27,7 @@
                         <div class="card bg-primary shadow rounded-0 mt-3">
                             <div class="card-body text-white h4">
                                 <i class="fas fa-envelope fa-fw"></i>
-                                <span class="h5">Messages {{ $messagetotal }}</span>
+                                <span class="h5">{{ trans('messages.Messages') }} {{ $messagetotal }}</span>
                             </div>
                         </div>
                     </div>
@@ -39,37 +37,36 @@
                         <div class="card bg-primary shadow rounded-0 mt-3">
                             <div class="card-body text-white h4">
                                 <i class="fas fa-home fa-fw"></i>
-                                <span class="h5">Recent Properties</span>
+                                <span class="h5">{{ trans('messages.Recent Properties') }}</span>
                             </div>
                         </div>
-                        <div class="box-content">
+                        <ul class="list-group">
                             @foreach($properties as $key => $property)
-                            <div class="grey lighten-4">
-                                <a href="{{route('property.show',$property->slug)}}" target="_blank" class="border-bottom display-block p-15  grey-text-d-2">
+                            <li class="list-group-item">
+                                <a href="{{route('property.show',$property->slug)}}" target="_blank">
                                     {{ ++$key }}. {{ str_limit($property->title, 28) }}
-                                    <span class="right">&dollar;{{ $property->price }}</span>
+                                    <span>&dollar;{{ $property->price }}</span>
                                 </a>
-                            </div>
+                            </li>
                             @endforeach
-                        </div>
+                        </ul>
                     </div>
                     <div class="col-lg-6 col-md-6">
                         <div class="card bg-primary shadow rounded-0 mt-3">
                             <div class="card-body text-white h4">
                                 <i class="fas fa-envelope-open-text fa-fw"></i>
-                                <span class="h5">Recent Mails</span>
+                                <span class="h5">{{ trans('messages.Recent Mails') }}</span>
                             </div>
                         </div>
-                        <div class="box-content">
+                        <ul class="list-group">
                             @foreach($messages as $message)
-                            <div class="grey lighten-4">
-                                <a href="" class="border-bottom display-block p-15 grey-text-d-2">
-                                    <strong>{{ strtok($message->name, " ") }}:</strong>
-                                    <span class="p-l-5">{{ str_limit($message->message, 25) }}</span>
+                            <li class="list-group-item">
+                                <a href="/agent/message/read/{{ $message->id }}" class="card-fot">
+                                    <strong>{{ strtok($message->name, " ") }}: </strong><span>{{ str_limit($message->message, 25) }}</span>
                                 </a>
-                            </div>
+                            </li>
                             @endforeach
-                        </div>
+                        </ul>
                     </div>
                 </div>
             </div>

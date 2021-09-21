@@ -28,7 +28,9 @@
             @foreach($agents as $agent)
             <aside class="col-lg-4 col-md-5 col-12">
                 <div class="card shadow border-0">
-                    <a href="{{ route('agents.show',$agent->id) }}"><img src="{{Storage::url('users/'.$agent->image)}}" alt="{{ $agent->name }}"></a>
+                    <a href="{{ route('agents.show',$agent->id) }}">
+                        <img class="card-img-top" src="{{Storage::url('users/'.$agent->image)}}" alt="{{ $agent->name }}">
+                    </a>
                     <div class="card-body text-center">
                         <h5 class="card-title">
                         <a href="{{ route('agents.show',$agent->id) }}" class="card-fot">{{ $agent->name }}</a>

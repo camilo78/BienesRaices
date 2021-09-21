@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Agent;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\LanguageController;
 use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Facades\Image;
 use App\Property;
@@ -49,11 +50,12 @@ class PropertyController extends Controller
             'city'               => 'required',
             'address'            => 'required',
             'area'               => 'required',
-            'image'              => 'required|image|mimes:jpeg,jpg,png',
-            'floor_plan'         => 'image|mimes:jpeg,jpg,png',
+            'image'              => 'required|mimes:jpg,png,jpeg,gif,svg',
+            'floor_plan'         => 'mimes:jpg,png,jpeg,gif,svg',
             'description'        => 'required',
             'location_latitude'  => 'required',
             'location_longitude' => 'required',
+            'video'              => 'nullable|url'
         ]);
 
         $image = $request->file('image');
@@ -136,7 +138,7 @@ class PropertyController extends Controller
             }
         }
 
-        Toastr::success('message', 'Property created successfully.');
+        Toastr::success(trans('messages.Property created successfully'));
         return redirect()->route('agent.properties.index');
     }
 
@@ -154,20 +156,21 @@ class PropertyController extends Controller
     public function update(Request $request, $property)
     {   
         $request->validate([
-            'title'     => 'required|max:255',
-            'price'     => 'required',
-            'purpose'   => 'required',
-            'type'      => 'required',
-            'bedroom'   => 'required',
-            'bathroom'  => 'required',
-            'city'      => 'required',
-            'address'   => 'required',
-            'area'      => 'required',
-            'image'     => 'image|mimes:jpeg,jpg,png',
-            'floor_plan'=> 'image|mimes:jpeg,jpg,png',
+            'title'              => 'required|max:255',
+            'price'              => 'required',
+            'purpose'            => 'required',
+            'type'               => 'required',
+            'bedroom'            => 'required',
+            'bathroom'           => 'required',
+            'city'               => 'required',
+            'address'            => 'required',
+            'area'               => 'required',
+            'image'              => 'nullable|mimes:jpg,png,jpeg,gif,svg',
+            'floor_plan'         => 'mimes:jpg,png,jpeg,gif,svg',
             'description'        => 'required',
             'location_latitude'  => 'required',
-            'location_longitude' => 'required'
+            'location_longitude' => 'required',
+            'video'              => 'nullable|url'
         ]);
 
         $image = $request->file('image');
@@ -262,7 +265,7 @@ class PropertyController extends Controller
             }
         }
 
-        Toastr::success('message', 'Property updated successfully.');
+        Toastr::success(trans('messages.Property updated successfully'));
         return redirect()->route('agent.properties.index');
     }
 
@@ -292,7 +295,7 @@ class PropertyController extends Controller
 
         $property->features()->detach();
         
-        Toastr::success('message', 'Property deleted successfully.');
+        Toastr::success(trans('messages.Property deleted successfully'));
         return back();
     }
 

@@ -1,24 +1,16 @@
-
-
-
-
-
 @extends('frontend.layouts.app')
-
 @section('styles')
 @endsection
-
 @section('content')
 <section class="section">
     <div class="container">
         <div class="row">
             <div class="col-lg-3 col-md-3">
-                <div class="agent-sidebar">
-                    @include('user.sidebar')
-                </div>
+                @include('user.sidebar')
             </div>
             <div class="col-lg-9 col-md-9">
-                <div class="card rounded-0 shadow border-0 bg-primary">
+                <div class="card rounded-0
+                12bg-primary">
                     <div class="card-body">
                         <h4 class="agent-title text-white">{{ trans('messages.Messages') }}</h4>
                     </div>
@@ -82,26 +74,24 @@
         </div>
     </div>
 </section>
-
 @endsection
-
 @section('scripts')
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script>
         function deleteMessage(id){
             swal({
-            title: 'Are you sure?',
-            text: "You won't be able to revert this!",
+            title: '{{ trans("messages.Are you sure?") }}',
+            text: "{{ trans('messages.You won´t be able to revert this!') }}",
             icon: 'warning',
             buttons: true,
             dangerMode: true,
-            buttons: ["Cancel", "Yes, delete it!"]
+            buttons: ["{{ trans('messages.Cancel') }}", "{{ trans('messages.Yes, delete it!') }}"]
             }).then((value) => {
                 if (value) {
                     document.getElementById('del-message-'+id).submit();
                     swal(
-                    'Deleted!',
-                    'Message has been deleted.',
+                    '{{ trans('messages.Deleted') }}!',
+                    '{{ trans('messages.Message has been deleted.') }}',
                     'success',
                     {
                         buttons: false,

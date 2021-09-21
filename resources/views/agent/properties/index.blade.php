@@ -8,28 +8,25 @@
     <section class="section">
         <div class="container">
             <div class="row">
-
-                <div class="col s12 m3">
-                    <div class="agent-sidebar">
-                        @include('agent.sidebar')
-                    </div>
+                <div class="col-md-3">
+                    @include('agent.sidebar')
                 </div>
 
-                <div class="col s12 m9">
+                <div class="col-md-9">
 
-                    <h4 class="agent-title">PROPERTY LIST</h4>
+                    <h4 class="agent-title">{{ trans('messages.Property List') }}</h4>
                     
-                    <div class="agent-content">
-                        <table class="striped responsive-table">
+                    <div class="table-responsive">
+                        <table class="table">
                             <thead>
                                 <tr>
                                     <th>SL.</th>
-                                    <th>Title</th>
-                                    <th>Type</th>
-                                    <th>City</th>
-                                    <th><i class="material-icons small-star p-t-10">comment</i></th>
-                                    <th><i class="material-icons small-star p-t-10">stars</i></th>
-                                    <th>Action</th>
+                                    <th>{{ trans('messages.Title') }}</th>
+                                    <th>{{ trans('messages.Type') }}</th>
+                                    <th>{{ trans('messages.City') }}</th>
+                                    <th class="text-center"><i class="far fa-comment"></i></th>
+                                    <th class="text-center"><i class="far fa-star"></i></th>
+                                    <th class="text-center">{{ trans('messages.Action') }}</th>
                                 </tr>
                             </thead>
                     
@@ -46,25 +43,25 @@
                                         <td>{{ ucfirst($property->type) }}</td>
                                         <td>{{ ucfirst($property->city) }}</td>
 
-                                        <td class="center">
-                                            <span><i class="material-icons small-comment left">comment</i>{{ $property->comments_count }}</span>
+                                        <td class="text-center">
+                                            <span><i class="fas fa-comment fa-fw"></i> {{ $property->comments_count }}</span>
                                         </td>
 
-                                        <td class="center">
+                                        <td class="text-center">
                                             @if($property->featured == true)
-                                                <span class="indigo-text"><i class="material-icons small-star">stars</i></span>
+                                                <span class="text-warning"><i class="fas fa-star"></i></span>
                                             @endif
                                         </td>
     
-                                        <td class="center">
-                                            <a href="{{route('property.show',$property->slug)}}" target="_blank" class="btn btn-small green waves-effect">
-                                                <i class="material-icons">visibility</i>
+                                        <td class="text-center">
+                                            <a href="{{route('property.show',$property->slug)}}" target="_blank" class="btn btn-info btn-sm rounded-0">
+                                                <i class="far fa-eye"></i>
                                             </a>
-                                            <a href="{{route('agent.properties.edit',$property->slug)}}" class="btn btn-small orange waves-effect">
-                                                <i class="material-icons">edit</i>
+                                            <a href="{{route('agent.properties.edit',$property->slug)}}" class="btn btn-warning btn-sm rounded-0">
+                                                <i class="far fa-edit"></i>
                                             </a>
-                                            <button type="button" class="btn btn-small deep-orange accent-3 waves-effect" onclick="deleteProperty({{$property->id}})">
-                                                <i class="material-icons">delete</i>
+                                            <button type="button" class="btn btn-danger btn-sm rounded-0" onclick="deleteProperty({{$property->id}})">
+                                                <i class="far fa-trash-alt"></i>
                                             </button>
                                             <form action="{{route('agent.properties.destroy',$property->slug)}}" method="POST" id="del-property-{{$property->id}}" style="display:none;">
                                                 @csrf

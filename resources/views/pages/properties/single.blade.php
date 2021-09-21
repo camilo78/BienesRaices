@@ -232,7 +232,7 @@
                             </div>
                         @endif
                     </div>
-                    @if($property->features)
+                    @if(empty($property->features))
                         <div class="services related-service">
                             <h3 class="title">{{ trans('messages.Features') }}</h3>
                             @foreach($property->features as $feature)

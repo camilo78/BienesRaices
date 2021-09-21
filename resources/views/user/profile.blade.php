@@ -51,7 +51,7 @@
                                 <div class="col-lg-12 col-md-12">
                                     <div class="input-group input-group-lg mt-3">
                                         <span class="input-group-text rounded-0 btn-primary" id="basic-addon1"><i class="fas fa-edit"></i></span>
-                                        <textarea id="about" name="about" placeholder="{{ trans('messages.About me') }}" class="form-control rounded-0">{{ $profile->about or null }}</textarea>
+                                        <textarea id="about" name="about" placeholder="{{ trans('messages.About me') }}" class="form-control rounded-0">{{ $profile->about}}</textarea>
                                     </div>
                                 </div>
                             </div>

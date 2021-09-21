@@ -20,41 +20,37 @@
                         </div>
                     </div>
                 </div>
-                <h5>Property List of {{ $agent->name }}</h5>
+                <hr>
+                <h5>{{ trans('messages.Property List of') }} {{ $agent->name }}</h5>
                 {{-- AGENT PROPERTIES --}}
                 @foreach($properties as $property)
-                <div class="card border-0 mb-3">
-
-                        <span class="card-image-bg" style="background-image:url({{Storage::url('property/'.$property->image)}});"></span>
-
-                    <div class="card-body">
-                        <div class="p-20 property-content">
-                            <span class="card-title search-title" title="{{$property->title}}">
-                                <a href="{{ route('property.show',$property->slug) }}">{{ str_limit($property->title,25) }}</a>
-                            </span>
-                            <h5>
-                            &dollar;{{ $property->price }}
-                            <small class="right p-r-10">{{ $property->type }} for {{ $property->purpose }}</small>
-                            </h5>
+                <div class="card mb-3 mt-3">
+                    <div class="row g-0">
+                        <div class="col-lg-4">
+                            <div class="p-ribbon">
+                                @if($property->featured == 1)
+                                <div class="ribbon"><i
+                                class="far fa-star"></i> {{ trans('messages.Featured') }}</div>
+                                @endif
+                            </div>
+                            <img src="{{Storage::url('property/'.$property->image)}}" class="img-fluid rounded-start" alt="{{$property->title}}">
                         </div>
-                        <div class="card-action property-action">
-                            <span class="btn-flat">
-                                <i class="material-icons">check_box</i>
-                                Beds: <strong>{{ $property->bedroom}}</strong>
-                            </span>
-                            <span class="btn-flat">
-                                <i class="material-icons">check_box</i>
-                                Baths: <strong>{{ $property->bathroom}}</strong>
-                            </span>
-                            <span class="btn-flat">
-                                <i class="material-icons">check_box</i>
-                                Area: <strong>{{ $property->area}}</strong> Sq Ft
-                            </span>
-                            @if($property->featured == 1)
-                            <span class="right featured-stars">
-                                <i class="material-icons">stars</i>
-                            </span>
-                            @endif
+                        <div class="col-lg-8">
+                            <div class="card-body">
+                                <h5 class="card-title card-fot"><a href="{{ route('property.show',$property->slug) }}">{{$property->title}}</a></h5>
+                                <p class="card-text h5">L. {{ number_format($property->price, 2) }}</p>
+                                <p>
+                                    <span class="text-body text-capitalize"><i class="far fa-check-square fa-fw"></i> {{ trans("messages.$property->type") }}</span>
+                                    <span class="text-body text-capitalize"><i
+                                    class="far fa-check-square fa-fw"></i> {{ trans("messages.for") }} {{ trans("messages.$property->purpose") }}</span>
+                                </p>
+                                <p>
+                                    <span class="text-body"><i class="fas fa-bed fa-fw"></i> {{ trans("messages.Bedroom")}}: {{ $property->bedroom }}</span>
+                                    <span class="text-body"><i class="fas fa-bath fa-fw"></i> {{ trans("messages.Bathroom")}}: {{ $property->bathroom }}</span>
+                                    <span class="text-body"><i class="fas fa-ruler-combined fa-fw"></i> {{ trans("messages.Area")}}: {{ $property->area }} m<sup>2</sup></span>
+                                    <span class="text-body"><i class="fas fa-comment-alt fa-fw"></i> {{ trans("messages.Comments")}}: {{ $property->comments_count}}</span>
+                                </p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -66,71 +62,67 @@
             <aside class="col-lg-4 col-md-5 col-12">
                 <div class="sidebar">
                     <div class="widget popular-feeds">
-                        <h5 class="widget-title">Contact with Agent</h5>
-                        <li class="collection agent-message">
-                            <form class="agent-message-box" action="" method="POST">
-                                @csrf
-                                <input type="hidden" name="agent_id" value="{{ $agent->id }}">
-                                <input type="hidden" name="user_id" value="{{ auth()->id() }}">
-                                <div class="box">
-                                    <input type="text" name="name" placeholder="Your Name">
-                                </div>
-                                <div class="box">
-                                    <input type="email" name="email" placeholder="Your Email">
-                                </div>
-                                <div class="box">
-                                    <input type="number" name="phone" placeholder="Your Phone">
-                                </div>
-                                <div class="box">
-                                    <textarea name="message" placeholder="Your Msssage"></textarea>
-                                </div>
-                                <div class="box">
-                                    <button id="msgsubmitbtn" class="btn waves-effect waves-light w100 indigo" type="submit">
-                                    SEND
-                                    <i class="material-icons left">send</i>
-                                    </button>
-                                </div>
-                            </form>
-                        </li>
-                    </ul>
+                        <h5 class="widget-title">{{ trans('messages.Contact with Agent')}}</h5>
+                        <form class="agent-message-box" action="" method="POST">
+                            @csrf
+                            <input type="hidden" name="agent_id" value="{{ $agent->id }}">
+                            <input type="hidden" name="user_id" value="{{ auth()->id() }}">
+                            <div class="box">
+                                <input type="text" name="name" placeholder="  {{ trans('messages.Your Name') }}" class="form-control rounded-0 mb-3">
+                            </div>
+                            <div class="box">
+                                <input type="email" name="email" placeholder="  {{ trans('messages.Your Email') }}" class="form-control rounded-0 mb-3">
+                            </div>
+                            <div class="box">
+                                <input type="number" name="phone" placeholder="  {{ trans('messages.Your Phone') }}" class="form-control rounded-0 mb-3">
+                            </div>
+                            <div class="box">
+                                <textarea name="message" placeholder="{{ trans('messages.Your Message') }}" class="form-control rounded-0 mb-3"></textarea>
+                            </div>
+                            <div class="d-flex justify-content-end">
+                                <button id="msgsubmitbtn" class="btn btn-primary rounded-0" type="submit">
+                                {{ trans('messages.Send') }} <i class="far fa-share-square"></i>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</section>
-@endsection
-@section('scripts')
-<script>
-$(function(){
-$(document).on('submit','.agent-message-box',function(e){
-e.preventDefault();
-var data = $(this).serialize();
-var url = "{{ route('property.message') }}";
-var btn = $('#msgsubmitbtn');
-$.ajax({
-type: 'POST',
-url: url,
-data: data,
-beforeSend: function() {
-$(btn).addClass('disabled');
-$(btn).empty().append('LOADING...<i class="material-icons left">rotate_right</i>');
-},
-success: function(data) {
-if (data.message) {
-M.toast({html: data.message, classes:'green darken-4'})
-}
-},
-error: function(xhr) {
-M.toast({html: xhr.statusText, classes: 'red darken-4'})
-},
-complete: function() {
-$('form.agent-message-box')[0].reset();
-$(btn).removeClass('disabled');
-$(btn).empty().append('SEND<i class="material-icons left">send</i>');
-},
-dataType: 'json'
-});
-})
-})
-</script>
-@endsection
+    </section>
+    @endsection
+    @section('scripts')
+    <script>
+    $(function(){
+    $(document).on('submit','.agent-message-box',function(e){
+        e.preventDefault();
+        var data = $(this).serialize();
+        var url = "{{ route('property.message') }}";
+        var btn = $('#msgsubmitbtn');
+        $.ajax({
+            type: 'POST',
+            url: url,
+            data: data,
+            beforeSend: function() {
+                $(btn).addClass('disabled');
+                $(btn).empty().append('{{ trans('messages.Loading') }}... <i class="fas fa-sync fa-spin"></i>');
+            },
+            success: function(data) {
+                if (data.message) {
+                    toastr.success(data.message)
+                }
+            },
+            error: function(xhr) {
+                toastr.success(xhr.statusText)
+            },
+            complete: function() {
+                $('form.agent-message-box')[0].reset();
+                        $(btn).removeClass('disabled');
+                        $(btn).empty().append('{{ trans('messages.Sent') }} <i class="far fa-share-square"></i>');
+            },
+            dataType: 'json'
+            });
+        })
+    })
+    </script>
+    @endsection
