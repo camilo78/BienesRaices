@@ -20,74 +20,74 @@
         <div class="col-lg-8 col-md-4 col-sm-12 col-xs-12">
             <div class="card">
                 <div class="header bg-indigo">
-                    <h2>CREATE PROPERTY</h2>
+                    <h2>{{ trans('messages.CREATE PROPERTY') }}</h2>
                 </div>
                 <div class="body">
 
                     <div class="form-group form-float">
                         <div class="form-line">
                             <input type="text" name="title" class="form-control" value="{{old('title')}}">
-                            <label class="form-label">Property Title</label>
+                            <label class="form-label">{{ trans('messages.Property Title') }}</label>
                         </div>
                     </div>
 
                     <div class="form-group form-float">
                         <div class="form-line">
                             <input type="number" class="form-control" name="price" required value="{{old('price')}}">
-                            <label class="form-label">Price</label>
+                            <label class="form-label">{{ trans('messages.Price') }}</label>
                         </div>
                     </div>
 
                     <div class="form-group form-float">
                         <div class="form-line">
                             <input type="number" class="form-control" name="bedroom" required value="{{old('bedroom')}}">
-                            <label class="form-label">Bedroom</label>
+                            <label class="form-label">{{ trans('messages.Bedroom') }}</label>
                         </div>
                     </div>
 
                     <div class="form-group form-float">
                         <div class="form-line">
                             <input type="number" class="form-control" name="bathroom" required value="{{old('bathroom')}}">
-                            <label class="form-label">Bathroom</label>
+                            <label class="form-label">{{ trans('messages.Bathroom') }}</label>
                         </div>
                     </div>
 
                     <div class="form-group form-float">
                         <div class="form-line">
                             <input type="text" class="form-control" name="city" required value="{{old('city')}}">
-                            <label class="form-label">City</label>
+                            <label class="form-label">{{ trans('messages.City') }}</label>
                         </div>
                     </div>
 
                     <div class="form-group form-float">
                         <div class="form-line">
                             <input type="text" class="form-control" name="address" required value="{{old('address')}}">
-                            <label class="form-label">Address</label>
+                            <label class="form-label">{{ trans('messages.Address') }}</label>
                         </div>
                     </div>
 
                     <div class="form-group form-float">
                         <div class="form-line">
                             <input type="number" class="form-control" name="area" required value="{{old('area')}}">
-                            <label class="form-label">Area</label>
+                            <label class="form-label">{{ trans('messages.Area') }}</label>
                         </div>
-                        <div class="help-info">Square Feet</div>
+                        <div class="help-info">{{ trans('messages.Square Meter') }}</div>
                     </div>
 
                     <div class="form-group">
                         <input type="checkbox" id="featured" name="featured" class="filled-in" value="1" />
-                        <label for="featured">Featured</label>
+                        <label for="featured">{{ trans('messages.Featured') }}</label>
                     </div>
 
                     <hr>
                     <div class="form-group">
-                        <label for="tinymce">Description</label>
+                        <label for="tinymce">{{ trans('messages.Description') }}</label>
                         <textarea name="description" id="tinymce">{{old('description')}}</textarea>
                     </div>
 
                     <hr>
                     <div class="form-group">
-                        <label for="tinymce-nearby">Nearby</label>
+                        <label for="tinymce-nearby">{{ trans('messages.Nearby') }}</label>
                         <textarea name="nearby" id="tinymce-nearby">{{old('nearby')}}</textarea>
                     </div>
 
@@ -95,7 +95,7 @@
             </div>
             <div class="card">
                 <div class="header">
-                    <h2>GALLERY IMAGE</h2>
+                    <h2>{{ trans('messages.GALLERY IMAGE') }}</h2>
                 </div>
                 <div class="body">
                     <input id="input-id" type="file" name="gallaryimage[]" class="file" data-preview-file-type="text" multiple>
@@ -105,28 +105,28 @@
         <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
             <div class="card">
                 <div class="header bg-indigo">
-                    <h2>SELECT</h2>
+                    <h2>{{ trans('messages.SELECT') }}</h2>
                 </div>
                 <div class="body">
 
                     <div class="form-group form-float">
                         <div class="form-line {{$errors->has('purpose') ? 'focused error' : ''}}">
-                            <label>Select Purpose</label>
+                            <label>{{ trans('messages.Select Purpose') }}</label>
                             <select name="purpose" class="form-control show-tick">
-                                <option value="">-- Please select --</option>
-                                <option value="sale">Sale</option>
-                                <option value="rent">Rent</option>
+                                <option value="">-- {{ trans('messages.Please select') }} --</option>
+                                <option value="sale" @if(old('purpose') == 'sale') selected @endif>{{ trans('messages.Sale') }}</option>
+                                <option value="rent" @if(old('purpose') == 'rent') selected @endif>{{ trans('messages.Rent') }}</option>
                             </select>
                         </div>
                     </div>
 
                     <div class="form-group form-float">
                         <div class="form-line {{$errors->has('type') ? 'focused error' : ''}}">
-                            <label>Select type</label>
+                            <label>{{ trans('messages.Select type') }}</label>
                             <select name="type" class="form-control show-tick">
-                                <option value="">-- Please select --</option>
-                                <option value="house">House</option>
-                                <option value="apartment">Apartment</option>
+                                <option value="">-- {{ trans('messages.Please select') }} --</option>
+                                <option value="house"  @if(old('type') == 'house') selected @endif>{{ trans('messages.House') }}</option>
+                                <option value="apartment"  @if(old('type') == 'apartment') selected @endif>{{ trans('messages.Apartment') }}</option>
                             </select>
                         </div>
                     </div>
@@ -142,23 +142,23 @@
                     <div class="form-group form-float">
                         <div class="form-line">
                             <input type="text" class="form-control" name="video" value="{{old('video')}}">
-                            <label class="form-label">Video</label>
+                            <label class="form-label">{{ trans('messages.Video') }}</label>
                         </div>
-                        <div class="help-info">Youtube Link</div>
+                        <div class="help-info">{{ trans('messages.Youtube Link') }}</div>
                     </div>
 
                     <div class="clearfix">
-                        <h5>Google Map</h5>
+                        <h5>{{ trans('messages.Google Map') }}</h5>
                         <div class="form-group">
                             <div class="form-line">
                                 <input type="text" name="location_latitude" class="form-control" required value="{{old('location_latitude')}}">
-                                <label class="form-label">Latitude</label>
+                                <label class="form-label">{{ trans('messages.Latitude') }}</label>
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="form-line">
                                 <input type="text" name="location_longitude" class="form-control" required value="{{old('location_longitude')}}">
-                                <label class="form-label">Longitude</label>
+                                <label class="form-label">{{ trans('messages.Longitude') }}</label>
                             </div>
                         </div>
                     </div>
@@ -167,7 +167,7 @@
             </div>
             <div class="card">
                 <div class="header bg-indigo">
-                    <h2>FLOOR PLAN</h2>
+                    <h2>{{ trans('messages.FLOOR PLAN') }}</h2>
                 </div>
                 <div class="body">
                     <div class="form-group">
@@ -177,7 +177,7 @@
             </div>
             <div class="card">
                 <div class="header bg-indigo">
-                    <h2>FEATURED IMAGE</h2>
+                    <h2>{{ trans('messages.FEATURED IMAGE') }}</h2>
                 </div>
                 <div class="body">
                     <div class="form-group">
@@ -187,12 +187,12 @@
                     {{-- BUTTON --}}
                     <a href="{{route('admin.properties.index')}}" class="btn btn-danger btn-lg m-t-15 waves-effect">
                         <i class="material-icons left">arrow_back</i>
-                        <span>BACK</span>
+                        <span>{{ trans('messages.BACK') }}</span>
                     </a>
 
                     <button type="submit" class="btn btn-indigo btn-lg m-t-15 waves-effect">
                         <i class="material-icons">save</i>
-                        <span>SAVE</span>
+                        <span>{{ trans('messages.SAVE') }}</span>
                     </button>
                 </div>
             </div>

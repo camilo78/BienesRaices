@@ -40,7 +40,7 @@ class ServiceController extends Controller
         $service->service_order = $request->service_order;
         $service->save();
 
-        Toastr::success('message', 'Service created successfully.');
+        Toastr::success(trans('messages.Service created successfully.'));
         return redirect()->route('admin.services.index');
     }
 
@@ -69,7 +69,7 @@ class ServiceController extends Controller
         $service->service_order = $request->service_order;
         $service->save();
 
-        Toastr::success('message', 'Service updated successfully.');
+        Toastr::success(trans('messages.Service updated successfully.'));
         return redirect()->route('admin.services.index');
     }
 
@@ -79,7 +79,7 @@ class ServiceController extends Controller
         $service = Service::findOrFail($service->id);
         $service->delete();
 
-        Toastr::success('message', 'Service deleted successfully.');
+        Toastr::success(trans('messages.Service deleted successfully.'));
         return back();
     }
 }

@@ -10,7 +10,7 @@
 @section('content')
 
     <div class="block-header">
-        <h2>DASHBOARD</h2>
+        <h2>{{ trans('messages.DASHBOARD') }}</h2>
     </div>
 
     <!-- Widgets -->
@@ -21,7 +21,7 @@
                     <i class="material-icons">playlist_add_check</i>
                 </div>
                 <div class="content">
-                    <div class="text">TOTAL PROPERTY</div>
+                    <div class="text">{{ trans('messages.TOTAL PROPERTY') }}</div>
                     <div class="number count-to" data-from="0" data-to="{{ $propertycount }}" data-speed="15" data-fresh-interval="20"></div>
                 </div>
             </div>
@@ -32,7 +32,7 @@
                     <i class="material-icons">help</i>
                 </div>
                 <div class="content">
-                    <div class="text">TOTAL POST</div>
+                    <div class="text">{{ trans('messages.TOTAL POST') }}</div>
                     <div class="number count-to" data-from="0" data-to="{{ $postcount }}" data-speed="1000" data-fresh-interval="20"></div>
                 </div>
             </div>
@@ -43,7 +43,7 @@
                     <i class="material-icons">forum</i>
                 </div>
                 <div class="content">
-                    <div class="text">TOTAL COMMENT</div>
+                    <div class="text">{{ trans('messages.TOTAL COMMENT') }}</div>
                     <div class="number count-to" data-from="0" data-to="{{ $commentcount }}" data-speed="1000" data-fresh-interval="20"></div>
                 </div>
             </div>
@@ -54,7 +54,7 @@
                     <i class="material-icons">person_add</i>
                 </div>
                 <div class="content">
-                    <div class="text">TOTAL USER</div>
+                    <div class="text">{{ trans('messages.TOTAL USER') }}</div>
                     <div class="number count-to" data-from="0" data-to="{{ $usercount }}" data-speed="1000" data-fresh-interval="20"></div>
                 </div>
             </div>
@@ -67,7 +67,7 @@
         <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
             <div class="card">
                 <div class="header">
-                    <h2>RECENT PROPERTIES</h2>
+                    <h2>{{ trans('messages.RECENT PROPERTIES') }}</h2>
                 </div>
                 <div class="body">
                     <div class="table-responsive">
@@ -75,11 +75,11 @@
                             <thead>
                                 <tr>
                                     <th>SL.</th>
-                                    <th>Title</th>
-                                    <th>Price</th>
-                                    <th>City</th>
+                                    <th>{{ trans('messages.Title') }}</th>
+                                    <th>{{ trans('messages.Price') }}</th>
+                                    <th>{{ trans('messages.City') }}</th>
                                     <th><i class="material-icons small">star</i></th>
-                                    <th>Manager</th>
+                                    <th>{{ trans('messages.Manager') }}</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -95,7 +95,7 @@
                                     <td>{{ $property->city }}</td>
                                     <td>
                                         @if($property->featured == 1)
-                                            <span class="label bg-green">F</span>
+                                            <span class="label bg-green">{{ trans('messages.F') }}</span>
                                         @endif
                                     </td>
                                     <td>{{ strtok($property->user->name, " ")}}</td>
@@ -113,7 +113,7 @@
         <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
             <div class="card">
                 <div class="header">
-                    <h2>RECENT POSTS</h2>
+                    <h2>{{ trans('messages.RECENT POSTS') }}</h2>
                 </div>
                 <div class="body">
                     <div class="table-responsive">
@@ -121,9 +121,9 @@
                             <thead>
                                 <tr>
                                     <th>SL.</th>
-                                    <th>Title</th>
+                                    <th>{{ trans('messages.Title') }}</th>
                                     <th><i class="material-icons small">comment</i></th>
-                                    <th>Author</th>
+                                    <th>{{ trans('messages.Author') }}</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -155,7 +155,7 @@
         <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
             <div class="card">
                 <div class="header">
-                    <h2>USER LIST</h2>
+                    <h2>{{ trans('messages.USER LIST') }}</h2>
                 </div>
                 <div class="body">
                     <div class="table-responsive">
@@ -163,9 +163,9 @@
                             <thead>
                                 <tr>
                                     <th>SL.</th>
-                                    <th>Name</th>
-                                    <th>Email</th>
-                                    <th>Role</th>
+                                    <th>{{ trans('messages.Name') }}</th>
+                                    <th>{{ trans('messages.Email') }}</th>
+                                    <th>{{ trans('messages.Role') }}</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -189,7 +189,7 @@
         <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
             <div class="card">
                 <div class="header">
-                    <h2>RECENT COMMENTS</h2>
+                    <h2>{{ trans('messages.RECENT COMMENTS') }}</h2>
                 </div>
                 <div class="body">
                     <div class="table-responsive">
@@ -197,10 +197,10 @@
                             <thead>
                                 <tr>
                                     <th>SL.</th>
-                                    <th>Comment</th>
+                                    <th>{{ trans('messages.Comment') }}</th>
                                     <th><i class="material-icons small">check</i></th>
-                                    <th>Author</th>
-                                    <th>Time</th>
+                                    <th>{{ trans('messages.Author') }}</th>
+                                    <th>{{ trans('messages.Time') }}</th>
                                 </tr>
                             </thead>
                             <tbody>

@@ -21,7 +21,6 @@
                                 <p><i class="fas fa-globe"></i><a href="{!! route('lang.swap', $lang) !!}">{{ $lang === "es" ? "Español" : "Inglish" }}</a></p>
                             @endif
                         @endforeach
-
                     @endif
                 </div>
             </div>

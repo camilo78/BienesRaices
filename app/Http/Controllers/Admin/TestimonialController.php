@@ -55,7 +55,7 @@ class TestimonialController extends Controller
         $testimonial->image = $imagename;
         $testimonial->save();
 
-        Toastr::success('message', 'Testimonial created successfully.');
+        Toastr::success(trans('messages.Testimonial created successfully.'));
         return redirect()->route('admin.testimonials.index');
     }
 
@@ -100,7 +100,7 @@ class TestimonialController extends Controller
         $testimonial->image = $imagename;
         $testimonial->save();
 
-        Toastr::success('message', 'Testimonial updated successfully.');
+        Toastr::success(trans('messages.Testimonial updated successfully.'));
         return redirect()->route('admin.testimonials.index');
     }
 
@@ -115,7 +115,7 @@ class TestimonialController extends Controller
 
         $testimonial->delete();
 
-        Toastr::success('message', 'Testimonial deleted successfully.');
+        Toastr::success(trans('messages.Testimonial deleted successfully.'));
         return back();
     }
 }

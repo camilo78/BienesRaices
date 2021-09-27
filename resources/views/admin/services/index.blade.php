@@ -14,7 +14,7 @@
     <div class="block-header">
         <a href="{{route('admin.services.create')}}" class="waves-effect waves-light btn right m-b-15 addbtn">
             <i class="material-icons left">add</i>
-            <span>CREATE </span>
+            <span>{{ trans('messages.CREATE') }} </span>
         </a>
     </div>
 
@@ -22,7 +22,7 @@
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <div class="card">
                 <div class="header bg-indigo">
-                    <h2>SERVICE LIST</h2>
+                    <h2>{{ trans('messages.SERVICE LIST') }}</h2>
                 </div>
                 <div class="body">
                     <div class="table-responsive">
@@ -30,11 +30,11 @@
                             <thead>
                                 <tr>
                                     <th>SL.</th>
-                                    <th>Title</th>
-                                    <th>Description</th>
-                                    <th>Icon</th>
-                                    <th>Order</th>
-                                    <th width="100px">Action</th>
+                                    <th>{{ trans('messages.Title') }}</th>
+                                    <th>{{ trans('messages.Description') }}</th>
+                                    <th>{{ trans('messages.Icon') }}</th>
+                                    <th>{{ trans('messages.Order') }}</th>
+                                    <th width="100px">{{ trans('messages.Action') }}</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -93,21 +93,17 @@
         function deleteService(id){
             
             swal({
-            title: 'Are you sure?',
-            text: "You won't be able to revert this!",
+            title: '{{ trans('messages.Are you sure?') }}',
+            text: "{{ trans("messages.You won't be able to revert this!") }}",
             type: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#d33',
-            confirmButtonText: 'Yes, delete it!'
+            confirmButtonText: '{{ trans('messages.Yes, delete it!') }}'
+            cancelButtonText: '{{ trans('messages.Cancel') }}',
             }).then((result) => {
                 if (result.value) {
                     document.getElementById('del-service-'+id).submit();
-                    swal(
-                    'Deleted!',
-                    'Service has been deleted.',
-                    'success'
-                    )
                 }
             })
         }

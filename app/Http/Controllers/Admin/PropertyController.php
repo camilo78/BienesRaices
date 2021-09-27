@@ -47,7 +47,7 @@ class PropertyController extends Controller
             'city'      => 'required',
             'address'   => 'required',
             'area'      => 'required',
-            'image'     => 'mimes:jpg,png,jpeg,gif,svg',
+            'image'     => 'required|mimes:jpg,png,jpeg,gif,svg',
             'floor_plan'=> 'mimes:jpg,png,jpeg,gif,svg',
             'description'        => 'required',
             'location_latitude'  => 'required',
@@ -134,7 +134,7 @@ class PropertyController extends Controller
             }
         }
 
-        Toastr::success('message', 'Property created successfully.');
+        Toastr::success(trans('messages.Property created successfully.'));
         return redirect()->route('admin.properties.index');
     }
 
@@ -271,7 +271,7 @@ class PropertyController extends Controller
             }
         }
 
-        Toastr::success('message', 'Property updated successfully.');
+        Toastr::success(trans('messages.Property updated successfully.'));
         return redirect()->route('admin.properties.index');
     }
 
@@ -303,7 +303,7 @@ class PropertyController extends Controller
         $property->features()->detach();
         $property->comments()->delete();
 
-        Toastr::success('message', 'Property deleted successfully.');
+        Toastr::success(trans('messages.Property deleted successfully.'));
         return back();
     }
 

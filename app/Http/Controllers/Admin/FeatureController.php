@@ -67,9 +67,9 @@ class FeatureController extends Controller
 
     public function destroy($id)
     {
-        $feature = Feature::find($id);
+        $feature = Feature::findOrFail($id);
         $feature->delete();
-        $feature->features()->detach();
+        $feature->properties()->detach();
 
         Toastr::success('message', 'Feature deleted successfully.');
         return back();

@@ -18,10 +18,10 @@
             <div class="card">
                 <div class="header bg-indigo">
                     <h2>
-                        SLIDER LIST
+                       {{ trans('messages.SLIDER LIST') }}
                         <a href="{{route('admin.sliders.create')}}" class="btn waves-effect waves-light right headerightbtn">
                             <i class="material-icons left">add</i>
-                            <span>CREATE </span>
+                            <span>{{ trans('messages.CREATE') }} </span>
                         </a>
                     </h2>
                 </div>
@@ -31,10 +31,10 @@
                             <thead>
                                 <tr>
                                     <th>SL.</th>
-                                    <th>Image</th>
-                                    <th>Title</th>
-                                    <th>Description</th>
-                                    <th width="100px">Action</th>
+                                    <th>{{ trans('messages.Image') }}</th>
+                                    <th>{{ trans('messages.Title') }}</th>
+                                    <th>{{ trans('messages.Description') }}</th>
+                                    <th width="100px">{{ trans('messages.Action') }}</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -43,7 +43,7 @@
                                     <td>{{$key+1}}</td>
                                     <td>
                                         @if(Storage::disk('public')->exists('slider/'.$slider->image))
-                                            <img src="{{Storage::url('slider/'.$slider->image)}}" alt="{{$slider->title}}" width="160" class="img-responsive img-rounded">
+                                            <img src="{{Storage::url('slider/'.$slider->image)}}" alt="{{$slider->title}}" width="70" height="32">
                                         @endif
                                     </td>
                                     <td>{{$slider->title}}</td>
@@ -91,23 +91,18 @@
 
     <script>
         function deleteSlider(id){
-            
             swal({
-            title: 'Are you sure?',
-            text: "You won't be able to revert this!",
+            title: '{{ trans("messages.Are you sure?") }}',
+            text: "{{ trans("messages.You won't be able to revert this!") }}",
             type: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#d33',
-            confirmButtonText: 'Yes, delete it!'
+            confirmButtonText: '{{ trans('messages.Yes, delete it!') }}',
+            cancelButtonText: '{{ trans('messages.Cancel') }}'
             }).then((result) => {
                 if (result.value) {
                     document.getElementById('del-slider-'+id).submit();
-                    swal(
-                    'Deleted!',
-                    'Slider has been deleted.',
-                    'success'
-                    )
                 }
             })
         }

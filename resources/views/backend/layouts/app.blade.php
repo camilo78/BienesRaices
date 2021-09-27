@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>Real Estate - @yield('title')</title>
+    <title>{{ config('app.name', 'Casa Propia') }} - @yield('title')</title>
 
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext" rel="stylesheet" type="text/css">
@@ -52,7 +52,7 @@
                         </div>
                     </div>
                 </div>
-                <p>Please wait...</p>
+                <p>{{ trans('messages.Please wait') }}...</p>
             </div>
         </div>
 
@@ -64,7 +64,7 @@
             <div class="search-icon">
                 <i class="material-icons">search</i>
             </div>
-            <input type="text" placeholder="START TYPING...">
+            <input type="text" placeholder="{{ trans('messages.START TYPING') }}...">
             <div class="close-search">
                 <i class="material-icons">close</i>
             </div>
