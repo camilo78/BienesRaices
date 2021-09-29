@@ -70,19 +70,19 @@
                         <h6>Social Links</h6>
                         <div class="form-group">
                             <div class="form-line">
-                                <input type="text" name="facebook" class="form-control" value="{{ $settings->facebook }}">
+                                <input type="text" name="facebook" class="form-control" value="{{$settings->facebook}}">
                                 <label class="form-label">Facebook Handler</label>
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="form-line">
-                                <input type="text" name="twitter" class="form-control" value="{{ $settings->twitter }}">
+                                <input type="text" name="twitter" class="form-control" value="{{$settings->twitter}}">
                                 <label class="form-label">Twitter Handler</label>
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="form-line">
-                                <input type="text" name="linkedin" class="form-control" value="{{ $settings->linkedin }}">
+                                <input type="text" name="linkedin" class="form-control" value="{{$settings->linkedin}}">
                                 <label class="form-label">LinkedIn Handler</label>
                             </div>
                         </div>
