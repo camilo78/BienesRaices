@@ -19,7 +19,7 @@
             <div class="card">
                 <div class="header bg-indigo">
                     <h2>
-                        GALLERY IMAGE
+                        {{ trans('messages.GALLERY IMAGE') }}
                         <a href="{{ route('admin.album') }}" class="right" title="Back"><i class="material-icons">undo</i></a>
                     </h2>
                 </div>
@@ -40,7 +40,7 @@
         <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
             <div class="card">
                 <div class="header bg-indigo">
-                    <h2>UPLOAD GALLERY IMAGE</h2>
+                    <h2>{{ trans('messages.UPLOAD GALLERY IMAGE') }}</h2>
                 </div>
                 <div class="body">
                     <form action="{{route('admin.galleries.store')}}" method="POST" id="frmFileUpload" class="dropzone">
@@ -49,8 +49,8 @@
                             <div class="drag-icon-cph">
                                 <i class="material-icons">touch_app</i>
                             </div>
-                            <h3>Drop files here or click to upload.</h3>
-                            <em>(This is just a demo dropzone. Selected files are <strong>not</strong> actually uploaded.)</em>
+                            <h3>{{ trans('messages.Drop files here or click to upload.') }}</h3>
+                            <em>({{ trans('messages.This is just a demo dropzone. Selected files are not actually uploaded') }}</em>
                         </div>
                         <div class="fallback">
                             <input name="file" type="file" multiple />
@@ -60,7 +60,7 @@
                     
                     <a href="{{route('admin.album.gallery',$album_id)}}" class="btn btn-indigo btn-lg m-t-15 waves-effect" style="width:100%">
                         <i class="material-icons">refresh</i>
-                        <span>Refresh</span>
+                        <span>{{ trans('messages.Refresh') }}</span>
                     </a>
 
                 </div>

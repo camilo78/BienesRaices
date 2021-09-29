@@ -62,7 +62,7 @@ class CategoryController extends Controller
         $category->image = $imagename;
         $category->save();
 
-        Toastr::success('message', 'Category created successfully.');
+        Toastr::success(trans('messages.Category created successfully.'));
         return redirect()->route('admin.categories.index');
     }
 
@@ -122,7 +122,7 @@ class CategoryController extends Controller
         $category->image = $imagename;
         $category->save();
 
-        Toastr::success('message', 'Category updated successfully.');
+        Toastr::success(trans('messages.Category updated successfully.'));
         return redirect()->route('admin.categories.index');
     }
 
@@ -142,7 +142,7 @@ class CategoryController extends Controller
         $category->delete();
         $category->posts()->detach();
 
-        Toastr::success('message', 'Category deleted successfully.');
+        Toastr::success(trans('messages.Category deleted successfully.'));
         return back();
     }
 }

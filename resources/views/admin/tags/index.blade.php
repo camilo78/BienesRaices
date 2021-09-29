@@ -14,7 +14,7 @@
     <div class="block-header">
         <a href="{{route('admin.tags.create')}}" class="waves-effect waves-light btn right m-b-15 addbtn">
             <i class="material-icons left">add</i>
-            <span>CREATE </span>
+            <span>{{ trans('messages.CREATE') }} </span>
         </a>
     </div>
 
@@ -22,7 +22,7 @@
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <div class="card">
                 <div class="header">
-                    <h2>TAG LIST</h2>
+                    <h2>{{ trans('messages.TAG LIST') }}</h2>
                 </div>
                 <div class="body">
                     <div class="table-responsive">
@@ -30,19 +30,19 @@
                             <thead>
                                 <tr>
                                     <th>SL.</th>
-                                    <th>Name</th>
-                                    <th>Post Count</th>
-                                    <th>Slug</th>
-                                    <th>Action</th>
+                                    <th>{{ trans('messages.Name') }}</th>
+                                    <th>{{ trans('messages.Post Count') }}</th>
+                                    <th>{{ trans('messages.Slug') }}</th>
+                                    <th>{{ trans('messages.Action') }}</th>
                                 </tr>
                             </thead>
                             <tfoot>
                                 <tr>
                                     <th>SL.</th>
-                                    <th>Name</th>
-                                    <th>Post Count</th>
-                                    <th>Slug</th>
-                                    <th>Action</th>
+                                    <th>{{ trans('messages.Name') }}</th>
+                                    <th>{{ trans('messages.Post Count') }}</th>
+                                    <th>{{ trans('messages.Slug') }}</th>
+                                    <th>{{ trans('messages.Action') }}</th>
                                 </tr>
                             </tfoot>
                             <tbody>
@@ -97,21 +97,17 @@
         function deleteTag(id){
             
             swal({
-            title: 'Are you sure?',
-            text: "You won't be able to revert this!",
+            title: '{{ trans('messages.Are you sure?') }}',
+            text: "{{ trans("messages.You won't be able to revert this!") }}",
             type: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#d33',
-            confirmButtonText: 'Yes, delete it!'
+            confirmButtonText: '{{ trans('messages.Yes, delete it!') }}',
+            cancelButtonText: '{{ trans('messages.Cancel') }}',
             }).then((result) => {
                 if (result.value) {
                     document.getElementById('del-tag-'+id).submit();
-                    swal(
-                    'Deleted!',
-                    'Tag has been deleted.',
-                    'success'
-                    )
                 }
             })
         }
