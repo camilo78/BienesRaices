@@ -158,7 +158,7 @@ your experience and security.
     var slider = new tns({
         container: '.home-slider',
         slideBy: 'page',
-        autoplay: false,
+        autoplay: true,
         mouseDrag: true,
         gutter: 0,
         items: 1,
