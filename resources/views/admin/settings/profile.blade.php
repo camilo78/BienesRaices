@@ -30,21 +30,21 @@
 
                         <div class="form-group">
                             <div class="form-line">
-                                <input type="text" name="name" class="form-control" value="{{ $profile->name or null }}">
+                                <input type="text" name="name" class="form-control" value="{{ $profile->name }}">
                                 <label class="form-label">Name</label>
                             </div>
                         </div>
 
                         <div class="form-group">
                             <div class="form-line">
-                                <input type="text" name="username" class="form-control" value="{{ $profile->username or null }}">
+                                <input type="text" name="username" class="form-control" value="{{ $profile->username }}">
                                 <label class="form-label">User Name</label>
                             </div>
                         </div>
 
                         <div class="form-group">
                             <div class="form-line">
-                                <input type="email" name="email" class="form-control" value="{{ $profile->email or null }}">
+                                <input type="email" name="email" class="form-control" value="{{ $profile->email }}">
                                 <label class="form-label">Email</label>
                             </div>
                         </div>
@@ -61,7 +61,7 @@
 
                         <div class="form-group">
                             <div class="form-line">
-                                <textarea name="about" rows="4" class="form-control no-resize">{{ $profile->about or null }}</textarea>
+                                <textarea name="about" rows="4" class="form-control no-resize">{{ $profile->about }}</textarea>
                                 <label class="form-label">About Us</label>
                             </div>
                         </div>
